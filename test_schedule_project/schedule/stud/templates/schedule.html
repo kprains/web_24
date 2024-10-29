@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Расписание</title>
+    <style>
+        body {
+            background-color: black;
+            color: white;
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 2.5em;
+            margin-bottom: 20px;
+        }
+
+        .day {
+            margin-bottom: 30px;
+        }
+
+        h2 {
+            font-size: 2em;
+            color: #ED543F;
+            margin: 20px 0;
+        }
+
+        .event {
+            display: flex; /* Оставляем flex для выравнивания */
+            justify-content: space-between; /* Размещаем элементы по краям */
+            align-items: center; /* Центрируем по вертикали */
+            padding: 10px 0;
+        }
+
+        .activity {
+            font-weight: bold;
+            font-size: 1.2em;
+        }
+
+        .subject {
+            font-size: 1.1em;
+            margin-bottom: 5px; /* Добавлено для отступа между предметом и временем */
+        }
+
+        .times {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end; /* Выравнивание времени вправо */
+        }
+
+        .start, .end {
+            font-weight: bold;
+            font-size: 1em;
+        }
+
+        .divider {
+            height: 1px;
+            background-color: gray;
+            margin: 10px 0;
+        }
+
+        .thick {
+            height: 2px;
+        }
+
+        .thin {
+            height: 1px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Расписание</h1>
+        {% for day, events in timetable.items %}
+            <div class="day">
+                <h2>{{ day }}</h2>
+                <div class="divider thick"></div>
+                {% for event in events %}
+                    <div class="event">
+                        <div>
+                            <div class="activity">{{ event.activity }}</div>
+                            <div class="subject">{{ event.subject }}</div>
+                        </div>
+                        <div class="times">
+                            <div class="start">{{ event.start_time|time:"H:i" }}</div>
+                            <div class="end">{{ event.end_time|time:"H:i" }}</div>
+                        </div>
+                    </div>
+                    <div class="divider thin"></div>
+                {% endfor %}
+            </div>
+        {% endfor %}
+    </div>
+</body>
+</html>
