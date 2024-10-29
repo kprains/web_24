@@ -33,7 +33,7 @@
    git clone https://github.com/ваш_пользователь/ваш_репозиторий.git
 Перейдите в директорию проекта:
 
-cd ваш_репозиторий
+cd schedule
 Установите необходимые зависимости:
 
 pip install -r requirements.txt
